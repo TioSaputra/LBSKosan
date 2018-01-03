@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = Beranda.newInstance();
                         break;
                     case R.id.map_page:
-                        selectedFragment = Maps.newInstance();
+                        selectedFragment = Beranda.newInstance();
                         break;
                     case R.id.profil_page:
                         selectedFragment = Profile.newInstance();

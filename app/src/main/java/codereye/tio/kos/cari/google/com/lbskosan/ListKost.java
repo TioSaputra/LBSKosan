@@ -11,13 +11,7 @@ import android.view.ViewGroup;
  * Created by tio on 1/3/18.
  */
 
-public class Maps extends Fragment {
-
-
-    public static Maps newInstance(){
-        Maps fragment = new Maps();
-        return fragment;
-    }
+public class ListKost extends Fragment {
 
 
     @Override
@@ -29,6 +23,6 @@ public class Maps extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.maps, container, false);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 }
