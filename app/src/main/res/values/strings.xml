@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">LBSKosan</string>
+    <string name="bottom_nav_beranda">Beranda</string>
+    <string name="bottom_nav_peta">Peta</string>
+    <string name="bottom_nav_profil">Profil</string>
+</resources>
