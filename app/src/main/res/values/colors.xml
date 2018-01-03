@@ -7,4 +7,6 @@
     <color name="colorSecondaryDark">#9a0007</color>
     <color name="colorSecondaryLight">#ff6659</color>
     <color name="colorAccent">#ffffff</color>
+    <color name="white_trans">#E0E0E0</color>
+
 </resources>
