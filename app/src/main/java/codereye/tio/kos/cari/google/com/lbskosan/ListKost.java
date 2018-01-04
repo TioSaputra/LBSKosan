@@ -26,15 +26,24 @@ public class ListKost extends Fragment implements AdapterView.OnItemClickListene
     String alamat_kos[] = {"Jl Cemaran dua way halim", "Jl Kemang Kemang way duru ah", "Jalan puter lagu dangdut yang"};
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        System.out.println("On Create ListKost Called");
         super.onCreate(savedInstanceState);
-    }
 
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        System.out.println("On Create View ListKost Called");
         View RootView = inflater.inflate(R.layout.list_kost, container, false);
-        RootView = fillFoodList(RootView);
+        try {
+            RootView = fillFoodList(RootView);
+            System.out.println("List nya ok");
+        }catch (Exception e){
+            System.out.println("Error di ListKost : " + e);
+        }
+
+
         return RootView;
     }
 

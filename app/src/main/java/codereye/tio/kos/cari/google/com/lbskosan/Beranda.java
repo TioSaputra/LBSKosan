@@ -1,6 +1,7 @@
 package codereye.tio.kos.cari.google.com.lbskosan;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -32,19 +33,10 @@ public class Beranda extends Fragment {
         super.onAttach(activity);
     }
 
-
-    public static Beranda newInstance(){
-        Beranda fragment = new Beranda();
-        return fragment;
-    }
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        initializeMap();
-
-
+        System.out.println("ON Create Called");
     }
 
     @Nullable
@@ -52,28 +44,26 @@ public class Beranda extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View RootView = inflater.inflate(R.layout.beranda, container, false);
-
         vwPager = (ViewPager) RootView.findViewById(R.id.viewpager);
         tabLayout = (TabLayout) RootView.findViewById(R.id.beranda_tabs);
-
         setupViewPager(vwPager);
         tabLayout.setupWithViewPager(vwPager);
+
+        System.out.println("On Create View Called");
         return RootView;
     }
 
-//    private void initializeMap(){
-//        FragmentTransaction transaction = mainActivity.getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.beranda_container, MapsActivity.newInstance());
-//        transaction.commit();
-//    }
-
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(mainActivity.getSupportFragmentManager());
-        adapter.addFragment(new ListKost(), "DAFTAR");
-        adapter.addFragment(new MapsActivity(), "PETA");
-        viewPager.setAdapter(adapter);
+        try {
+            ViewPagerAdapter adapter = new ViewPagerAdapter(mainActivity.getSupportFragmentManager());
+            adapter.addFragment(new ListKost(), "DAFTAR");
+            adapter.addFragment(new MapsActivity(), "PETA");
+            viewPager.setAdapter(adapter);
+            System.out.println("List dan map di attach");
+        }catch (Exception e){
+            System.out.println("Setup View Pager Error : " + e);
+        }
     }
-
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
