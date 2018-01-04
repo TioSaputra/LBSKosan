@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="codereye.tio.kos.cari.google.com.lbskosan.LoginActivity">
+
+    <TextView
+        android:id="@+id/Texview_Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/Texview_Instruksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Silhakan log in melalui Facebook atau Gmail"
+        android:textSize="15dp"
+        android:layout_below="@id/Texview_Login"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btn_fb"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Texview_Instruksi"
+        android:layout_margin="15dp"
+        android:background="@drawable/background_button_fb"
+        android:text="Masuk Dengan Facebook"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:drawableLeft="@drawable/fb"/>
+
+    <TextView
+        android:id="@+id/Texview_atau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="----- atau -----"
+        android:textSize="18dp"
+        android:layout_below="@id/btn_fb"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
+
+
+    <Button
+        android:id="@+id/btn_google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Texview_atau"
+        android:layout_margin="15dp"
+        android:background="@drawable/background_button_gogle"
+        android:text="Masuk Dengan Gmail"
+        android:textColor="#FFFFFF"
+        android:drawableTint="@color/colorwhite"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:drawableLeft="@drawable/google"
+        />
+
+</RelativeLayout>
