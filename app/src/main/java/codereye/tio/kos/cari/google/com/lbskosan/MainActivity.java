@@ -40,13 +40,20 @@ public class MainActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()){
                     case R.id.home_page:
-                        selectedFragment = Beranda.newInstance();
+                        if(selectedFragment instanceof Beranda) {
+
+                        }else{
+                            selectedFragment = Beranda.newInstance();
+                        }
                         break;
                     case R.id.map_page:
-                        selectedFragment = Beranda.newInstance();
                         break;
                     case R.id.profil_page:
-                        selectedFragment = Profile.newInstance();
+                        if(selectedFragment instanceof Profile){
+
+                        }else{
+                            selectedFragment = Profile.newInstance();
+                        }
                         break;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
