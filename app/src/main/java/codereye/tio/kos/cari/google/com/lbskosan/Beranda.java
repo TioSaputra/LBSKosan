@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,74 +24,59 @@ import java.util.List;
 
 public class Beranda extends Fragment {
 
-    private MainActivity mainActivity;
-    private TabLayout tabLayout;
-    private ViewPager vwPager;
 
-    @Override
-    public void onAttach(Activity activity) {
-        mainActivity = (MainActivity) activity;
-        super.onAttach(activity);
-    }
+    ListKost listKost;
+    MapsActivity mapsActivity;
+
+
+    Button btnDaftar;
+    Button btnPeta;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        System.out.println("Beranda On Create Called");
+
         super.onCreate(savedInstanceState);
-        System.out.println("ON Create Called");
+        initializeFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        System.out.println("Beranda On Create View Called");
 
-        View RootView = inflater.inflate(R.layout.beranda, container, false);
-        vwPager = (ViewPager) RootView.findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) RootView.findViewById(R.id.beranda_tabs);
-        setupViewPager(vwPager);
-        tabLayout.setupWithViewPager(vwPager);
-
-        System.out.println("On Create View Called");
-        return RootView;
+        return inflater.inflate(R.layout.beranda, container, false);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        try {
-            ViewPagerAdapter adapter = new ViewPagerAdapter(mainActivity.getSupportFragmentManager());
-            adapter.addFragment(new ListKost(), "DAFTAR");
-            adapter.addFragment(new MapsActivity(), "PETA");
-            viewPager.setAdapter(adapter);
-            System.out.println("List dan map di attach");
-        }catch (Exception e){
-            System.out.println("Setup View Pager Error : " + e);
-        }
-    }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+    private void initializeFragment(){
+        System.out.println("Initialize Beranda Fragment");
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.beranda_fragment_container, listKost);
+        transaction.commit();
 
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
+        listKost = new ListKost();
+        mapsActivity = new MapsActivity();
+        btnDaftar = (Button) getActivity().findViewById(R.id.btnDaftar);
+        btnPeta = (Button) getActivity().findViewById(R.id.btnPeta);
 
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
+        btnDaftar.setOnClickListener(new View.OnClickListener() {
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.beranda_fragment_container, listKost);
+                transaction.commit();
+            }
+        });
+        btnPeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.beranda_fragment_container, mapsActivity);
+                transaction.commit();
+            }
+        });
     }
 }

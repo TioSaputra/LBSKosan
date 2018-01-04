@@ -23,9 +23,5 @@
         app:itemTextColor="@color/colorAccent"
         app:menu="@menu/bottom_navigation_items"
         />
-        <!--app:itemIconTint="@color/nav_item_state_list"-->
-        <!--app:itemTextColor="@color/nav_item_state_list"-->
-
-
 
 </RelativeLayout>
