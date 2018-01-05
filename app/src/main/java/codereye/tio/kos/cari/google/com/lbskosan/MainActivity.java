@@ -10,6 +10,9 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    Beranda berandaFragment;
+    Profile profileFragment;
+    MapsActivity mapsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,15 +20,18 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        showBeranda();
+        initializeFragment();
 
         setupBottomNavigation();
     }
 
 
-    private void showBeranda(){
+    private void initializeFragment(){
+        berandaFragment = new Beranda();
+        profileFragment = new Profile();
+        mapsFragment = new MapsActivity();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, Beranda.newInstance());
+        transaction.replace(R.id.fragment_container, berandaFragment);
         transaction.commit();
     }
 
@@ -37,27 +43,15 @@ public class MainActivity extends AppCompatActivity {
         btmNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 switch (item.getItemId()){
                     case R.id.home_page:
-                        if(selectedFragment instanceof Beranda) {
-
-                        }else{
-                            selectedFragment = Beranda.newInstance();
-                        }
-                        break;
-                    case R.id.map_page:
+                        transaction.replace(R.id.fragment_container, berandaFragment);
                         break;
                     case R.id.profil_page:
-                        if(selectedFragment instanceof Profile){
-
-                        }else{
-                            selectedFragment = Profile.newInstance();
-                        }
+                        transaction.replace(R.id.fragment_container, profileFragment);
                         break;
                 }
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, selectedFragment);
                 transaction.commit();
                 return false;
             }

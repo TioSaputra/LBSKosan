@@ -5,4 +5,6 @@
     <string name="bottom_nav_profil">Profil</string>
     <string name="title_activity_maps">Map</string>
 
+    <string name="first_beranda_navigation_button">DAFTAR</string>
+    <string name="second_beranda_navigation_button">PETA</string>
 </resources>
