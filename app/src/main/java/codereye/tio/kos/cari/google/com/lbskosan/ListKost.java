@@ -75,14 +75,6 @@ public class ListKost extends Fragment implements AdapterView.OnItemClickListene
 
     }
 
-    public List<Kosts> getKostsList() {
-        return kostsList;
-    }
-
-    public void setKostsList(List<Kosts> kostsList) {
-        this.kostsList = kostsList;
-    }
-
     private View fillFoodList(View RootView){
         listView = (ListView) RootView.findViewById(R.id.beranda_list);
         Customadapter customadapter = new Customadapter();

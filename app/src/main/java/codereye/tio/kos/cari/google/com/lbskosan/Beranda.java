@@ -107,8 +107,6 @@ public class Beranda extends Fragment {
                     kostsList.add(child.getValue(Kosts.class));
                 }
 
-                listKost.setKostsList(kostsList);
-
                 for (int i =0; i<kostsList.size(); i++){
                     System.out.println("Nama Kost an : " + kostsList.get(i).getNama());
                 }

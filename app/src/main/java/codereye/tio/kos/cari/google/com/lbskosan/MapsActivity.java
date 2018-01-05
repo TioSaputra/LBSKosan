@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,25 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import codereye.tio.kos.cari.google.com.lbskosan.model.Kosts;
 
 public class MapsActivity extends Fragment implements OnMapReadyCallback {
+
+    //Firebase Needed
+    private static final String TAG=Beranda.class.getSimpleName();
+    private FirebaseDatabase database;
+    private DatabaseReference myRef=null;
+    private List<Kosts> kostsList;
+    boolean isDataReady;
 
     private GoogleMap mMap;
     private MapView vwMap;
@@ -31,6 +49,7 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        getListData();
     }
 
     @Nullable
@@ -52,9 +71,17 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(kostsList.get(1).getLatitude(), kostsList.get(1).getLongitude());
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+
+        if(isDataReady=true){
+            for(int i=0; i<kostsList.size();i++){
+                LatLng coordinate = new LatLng(kostsList.get(i).getLatitude(), kostsList.get(i).getLongitude());
+                mMap.addMarker(new MarkerOptions().position(coordinate).title(kostsList.get(i).getNama()));
+            }
+        }
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
@@ -64,5 +91,38 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback {
         vwMap.onCreate(savedInstanceState);
         vwMap.onResume();
         vwMap.getMapAsync(this);
+    }
+
+    private void getListData(){
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("kost");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long value = dataSnapshot.getChildrenCount();
+                Log.d(TAG, "no of children : " + value);
+
+                try {
+                    kostsList = new ArrayList<Kosts>();
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        kostsList.add(child.getValue(Kosts.class));
+                    }
+
+                    for (int i = 0; i < kostsList.size(); i++) {
+                        System.out.println("Nama Kost an : " + kostsList.get(i).getNama());
+                    }
+                }catch (Exception e){
+
+                }finally {
+                    isDataReady = true;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+            }
+        });
     }
 }
