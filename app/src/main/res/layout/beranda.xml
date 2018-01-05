@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/colorPrimary"
         style="?android:attr/buttonBarStyle">
         <Button
             android:id="@+id/btnDaftar"
@@ -24,6 +25,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:text="@string/second_beranda_navigation_button" />
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/beranda_fragment_container"
         android:layout_width="match_parent"

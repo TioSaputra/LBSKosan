@@ -37,7 +37,7 @@ public class Beranda extends Fragment {
         System.out.println("Beranda On Create Called");
 
         super.onCreate(savedInstanceState);
-        initializeFragment();
+
     }
 
     @Nullable
@@ -48,32 +48,39 @@ public class Beranda extends Fragment {
         return inflater.inflate(R.layout.beranda, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initializeFragment();
+    }
 
     private void initializeFragment(){
         System.out.println("Initialize Beranda Fragment");
+        listKost = new ListKost();
+        mapsActivity = new MapsActivity();
 
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.beranda_fragment_container, listKost);
         transaction.commit();
 
-        listKost = new ListKost();
-        mapsActivity = new MapsActivity();
-        btnDaftar = (Button) getActivity().findViewById(R.id.btnDaftar);
-        btnPeta = (Button) getActivity().findViewById(R.id.btnPeta);
+
+        btnDaftar = (Button) getView().findViewById(R.id.btnDaftar);
+        btnPeta = (Button) getView().findViewById(R.id.btnPeta);
 
         btnDaftar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.beranda_fragment_container, listKost);
                 transaction.commit();
             }
         });
+
         btnPeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.beranda_fragment_container, mapsActivity);
                 transaction.commit();
             }
