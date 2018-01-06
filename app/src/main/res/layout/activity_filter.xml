@@ -322,7 +322,6 @@
                 android:id="@+id/btn_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Texview_atau"
                 android:layout_margin="15dp"
                 android:background="@drawable/background_button_filter"
                 android:text="Filter"
