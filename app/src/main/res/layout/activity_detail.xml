@@ -731,6 +731,25 @@
 
     </ScrollView>
 
+    <RelativeLayout
+        android:id="@+id/hubungikost"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorGreenLightSecondaryDark"
+        android:layout_alignParentBottom="true"
+        android:onClick="Hubungi">
+
+        <TextView
+            android:id="@+id/textview_hubungikost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Hubungi Pemilik Kos"
+            android:textColor="@color/colorwhite"
+            android:textSize="19dp"/>
+    </RelativeLayout>
+
 
 
 
