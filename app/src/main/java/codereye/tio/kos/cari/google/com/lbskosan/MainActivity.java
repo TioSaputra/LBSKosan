@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     Beranda berandaFragment;
     Profile profileFragment;
     MapsActivity mapsFragment;
+    LoginActivity loginFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         berandaFragment = new Beranda();
         profileFragment = new Profile();
         mapsFragment = new MapsActivity();
+        loginFragment = new LoginActivity();
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, berandaFragment);
         transaction.commit();

@@ -14,12 +14,6 @@ import android.view.ViewGroup;
 public class Profile extends Fragment{
 
 
-    public static Profile newInstance(){
-        Profile fragment = new Profile();
-        return fragment;
-    }
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
