@@ -8,7 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -683,14 +683,13 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="false">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textview_Kamar"
+                android:id="@+id/textview_Kost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="KOST MENARIK LAINNYA"
@@ -704,8 +703,14 @@
                 android:background="#bbb"
                 android:layout_margin="6dp"/>
 
-            </LinearLayout>
+                <ListView
+                    android:id="@+id/list_kosan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </ListView>
 
+
+            </LinearLayout>
 
 
             <View
@@ -716,18 +721,7 @@
                 android:layout_marginRight="10dp"/>
 
 
-
-
-
         </android.support.v7.widget.CardView>
-
-
-
-
-
-
-
-
 
 
         </LinearLayout>
@@ -737,24 +731,7 @@
 
     </ScrollView>
 
-    <RelativeLayout
-        android:id="@+id/hubungikost"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/colorGreenLightSecondaryDark"
-        android:layout_alignParentBottom="true"
-        android:onClick="Hubungi">
 
-        <TextView
-            android:id="@+id/textview_hubungikost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="Hubungi Pemilik Kos"
-            android:textColor="@color/colorwhite"
-            android:textSize="19dp"/>
-    </RelativeLayout>
 
 
 
