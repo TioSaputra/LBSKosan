@@ -84,6 +84,84 @@
                     </RelativeLayout>
 
 
+                    <!--Data Tentang Tempat-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <!--Provinsi -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="5dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Provinsi\t\t\t:"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:text="Di Lampung"/>
+                        </LinearLayout>
+
+                        <!--Kota-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="5dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Kota\t\t\t\t\t\t:"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:text="Bandar Lampung"/>
+                        </LinearLayout>
+
+                        <!--Kecamatan-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="5dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Kecamatan\t:"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:text="Tanjung Karang"/>
+                        </LinearLayout>
+
+                        <!--Alamat-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="5dp">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Alamat\t\t\t\t:"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:text="Jl. Keramat, No 31, Labuhan Ratu, Bandar Lampung"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
                     <TextView
                         android:id="@+id/textview_LokasiKosan"
                         android:layout_width="match_parent"
@@ -98,99 +176,6 @@
                         android:layout_height="1dp"
                         android:background="#bbb"
                         android:layout_margin="6dp"/>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textview_Provinsi"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Provinsi\t\t\t\t\t:"
-                                android:layout_marginLeft="5dp"
-                                android:textSize="13dp"/>
-
-                            <TextView
-                                android:id="@+id/textview_Kota"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Kota\t\t\t\t\t\t\t:"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:textSize="13dp"/>
-
-                            <TextView
-                                android:id="@+id/textview_Kecamatan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Kecamatan\t\t:"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:textSize="13dp"/>
-
-                            <TextView
-                                android:id="@+id/textview_Alamat"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Alamat\t\t\t\t\t:"
-                                android:layout_marginLeft="5dp"
-                                android:textSize="13dp"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textview_Provinsi_isi"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Di Lampung"
-                                android:textSize="13dp"/>
-
-                            <TextView
-                                android:id="@+id/textview_Kota_isi"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Bandar Lampung"
-                                android:textSize="13dp"/>
-
-                            <TextView
-                                android:id="@+id/textview_Kecamatan_isi"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Tanjung Karang"
-                                android:layout_marginTop="5dp"
-                                android:textSize="13dp"/>
-
-                            <TextView
-                                android:id="@+id/textview_Alamat_isi"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Jl.Kramat, No 31, Labuhan Ratu, Bandar Lampung"
-                                android:layout_marginTop="5dp"
-                                android:textSize="13dp"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/textview_Type_kost"

@@ -1,6 +1,7 @@
 package codereye.tio.kos.cari.google.com.lbskosan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -56,7 +57,8 @@ public class ListKost extends Fragment implements AdapterView.OnItemClickListene
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Intent i = new Intent(getActivity(), DetailActivity.class);
+        startActivity(i);
     }
 
     private void fillFoodList(){
