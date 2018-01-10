@@ -11,4 +11,8 @@
     <string name="first_beranda_navigation_button">DAFTAR</string>
     <string name="second_beranda_navigation_button">PETA</string>
     <string name="deskripsi_kosan">Lokasi Sangat Strategis, dekat area kampus, Klinik Kedaton, Mall Bumi Kedaton, Dekat Alfamart, ATM, warung makan, kantor pos.</string>
+    <string name="title_activity_bottom_navigasi">BottomNavigasi</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

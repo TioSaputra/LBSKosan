@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Profile profileFragment;
     MapsActivity mapsFragment;
     LoginActivity loginFragment;
+    ListKost listFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
         profileFragment = new Profile();
         mapsFragment = new MapsActivity();
         loginFragment = new LoginActivity();
+        listFragment = new ListKost();
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, berandaFragment);
+        transaction.replace(R.id.fragment_container, listFragment);
         transaction.commit();
     }
 
@@ -49,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 switch (item.getItemId()){
                     case R.id.home_page:
-                        transaction.replace(R.id.fragment_container, berandaFragment);
+                        transaction.replace(R.id.fragment_container, listFragment);
+                        break;
+                    case R.id.map_page:
+                        transaction.replace(R.id.fragment_container, mapsFragment);
                         break;
                     case R.id.profil_page:
                         transaction.replace(R.id.fragment_container, profileFragment);

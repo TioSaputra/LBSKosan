@@ -1,7 +1,6 @@
 package codereye.tio.kos.cari.google.com.lbskosan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -39,34 +38,19 @@ public class ListKost extends Fragment implements AdapterView.OnItemClickListene
 
     View RootView;
     ListView listView;
-    String nama_kos[] = {"Kostan dua ", "Wijaya Residen", "Rumah ragil ajah"};
-    String alamat_kos[] = {"Jl Cemaran dua way halim", "Jl Kemang Kemang way duru ah", "Jalan puter lagu dangdut yang"};
 
-
-    //Testing
-    boolean isDataReady = false;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         System.out.println("On Create ListKost Called");
         super.onCreate(savedInstanceState);
-
+        getListData();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         System.out.println("On Create View ListKost Called");
-        RootView = inflater.inflate(R.layout.list_kost, container, false);
-        try {
-            getListData();
-        }catch (Exception e){
-            System.out.println("Error di ListKost : " + e);
-        }finally {
-            if(isDataReady==true){
-                RootView = fillFoodList(RootView);
-                System.out.println("List nya ok");
-            }
-        }
+        RootView = inflater.inflate(R.layout.activity_list_kost, container, false);
         return RootView;
     }
 
@@ -75,12 +59,11 @@ public class ListKost extends Fragment implements AdapterView.OnItemClickListene
 
     }
 
-    private View fillFoodList(View RootView){
-        listView = (ListView) RootView.findViewById(R.id.beranda_list);
+    private void fillFoodList(){
+        listView = (ListView) getView().findViewById(R.id.beranda_list);
         Customadapter customadapter = new Customadapter();
         listView.setAdapter(customadapter);
         listView.setOnItemClickListener(this);
-        return RootView;
     }
 
     private void getListData(){
@@ -97,15 +80,14 @@ public class ListKost extends Fragment implements AdapterView.OnItemClickListene
                     kostsList = new ArrayList<Kosts>();
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
                         kostsList.add(child.getValue(Kosts.class));
+                        fillFoodList();
                     }
 
                     for (int i = 0; i < kostsList.size(); i++) {
                         System.out.println("Nama Kost an : " + kostsList.get(i).getNama());
                     }
                 }catch (Exception e){
-
-                }finally {
-                    isDataReady = true;
+                    System.out.println("Catch : " + e);
                 }
             }
 
@@ -120,7 +102,7 @@ public class ListKost extends Fragment implements AdapterView.OnItemClickListene
 
         @Override
         public int getCount() {
-            return nama_kos.length;
+            return kostsList.size();
         }
 
         @Override
